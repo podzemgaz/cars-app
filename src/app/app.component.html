@@ -1,0 +1,126 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img alt="logo" src="../assets/images/logo.png">
+    </div>
+    >
+    <nav class="menu">
+      <ul>
+        <li class="menu-item">
+          <a href="#">Главная</a>
+        </li>
+        <li class="menu-item">
+          <a href="#cars">Автомобили</a>
+        </li>
+        <li class="menu-item">
+          <a href="#price">Бронирование авто</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="main" [ngStyle]="bgPos">
+  <div class="container">
+    <div class="main-info">
+      <h1 class="main-title">Аренда премиальных автомобилей</h1>
+      <div class="main-text">В нашем клубе имеется солидная коллекция спортивных автомобилей — от достаточно
+        распространенных серийных машин до настоящего гоночного эксклюзива. Воспользуйтесь уникальной
+        возможностью побывать за рулем настоящей легенды и узнать, на что она способна за пределами гоночной
+        трассы!
+      </div>
+      <div class="main-action">
+        <button class="button" id="main-action" (click)="goScroll(cars)">
+          Посмотреть автомобили
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="car" id="cars" #cars>
+  <div class="container">
+    <h2 class="sub-title">Наш автопарк</h2>
+    <div class="car-items">
+      <div class="car-item" *ngFor="let car of carsData">
+        <div class="car-item-image">
+          <img alt="lambo" src="../assets/images/{{car.image}}">
+        </div>
+        <div class="car-item-title">{{car.name}}</div>
+        <div class="car-item-info">
+          <div class="car-item-point">
+            <img alt="wheel" src="../assets/images/wheel.png">
+            <div>Двигатель</div>
+            <div>{{car.engine}} л.с.</div>
+          </div>
+          <!--<div class="car-item-point">
+            <img alt="gear" src="../assets/images/gear.png">
+            <div>Привод</div>
+            <div>полный</div>
+          </div>-->
+          <div class="car-item-point">
+            <img src="../assets/images/transmission.png" alt="Transmission">
+            <div>Коробка</div>
+            <div>{{car.transmission}}</div>
+          </div>
+          <!--<div class="car-item-point">
+            <img alt="belt" src="../assets/images/belt.png">
+            <div>Места</div>
+            <div>2</div>
+          </div>-->
+          <div class="car-item-point">
+            <img src="../assets/images/year.png" alt="Year">
+            <div>Год</div>
+            <div>{{car.year}}</div>
+          </div>
+        </div>
+        <div class="car-item-action">
+          <button class="button car-button" (click)="goScroll(price, car)">Забронировать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="price" id="price" #price>
+  <div class="container">
+    <h2 class="sub-title">
+      Узнать цену и забронировать
+    </h2>
+    <div class="price-text">
+      Заполните данные, и мы перезвоним вам для уточнения всех деталей бронирования
+    </div>
+    <form action="" class="price-form" [formGroup]="priceForm">
+      <input type="text" class="price-input" id="name" placeholder="Ваше имя" formControlName="name">
+      <input type="text" class="price-input" id="phone" placeholder="Ваш телефон" formControlName="phone">
+      <!--<input type="text" class="price-input" id="car" placeholder="Автомобиль, который вас интересует">-->
+      <select name="car" id="car" class="price-input" formControlName="car">
+        <option value="">Выберите автомобиль</option>
+        <option value="Lamborghini Huracan Spyder">Lamborghini Huracan Spyder</option>
+        <option value="Chevrolet Corvette">Chevrolet Corvette</option>
+        <option value="Ferrari California">Ferrari California</option>
+        <option value="Lamborghini Urus">Lamborghini Urus</option>
+        <option value="Audi R8">Audi R8</option>
+        <option value="Chevrolet Camaro">Chevrolet Camaro</option>
+        <option value="Maserati Quattroporte">Maserati Quattroporte</option>
+        <option value="Dodge Challenger">Dodge Challenger</option>
+        <option value="Nissan GT-R">Nissan GT-R</option>
+      </select>
+      <button class="button" type="button" id="price-action" (click)="onSubmit()" [disabled]="!priceForm.valid">
+        Узнать цену
+      </button>
+    </form>
+    <img src="../assets/images/rolls.png" alt="rolls" class="price-image" [ngStyle]="trans">
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="logo">
+      <img alt="logo" src="../assets/images/logo.png">
+    </div>
+    <div class="rights">Все права защищены</div>
+  </div>
+</footer>
+
+<!--<div>
+  <button id="scroll-to-top-btn" class="back-to-top">ey ya zdes</button>
+</div>-->
